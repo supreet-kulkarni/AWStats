@@ -20,7 +20,7 @@ EOF
                 }
             }
         }
-        stage('Chackout Updated code') {
+        stage('Checkout Updated code') {
             steps {
                 sshagent(['35.154.202.202']) {
                 sh "ssh -o StrictHostKeyChecking=no ubuntu@13.234.59.0 'sudo su; cd /home/ubuntu; git clone https://github.com/supreet-kulkarni/AWStats.git'"
