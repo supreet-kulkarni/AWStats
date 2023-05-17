@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sshagent(['35.154.202.202']) {
                 sh '''#!/bin/bash
-                ssh -o StrictHostKeyChecking=no ubuntu@3.108.41.101 <<EOF 
+                ssh -o StrictHostKeyChecking=no ubuntu@13.234.59.0 <<EOF 
                 sudo su
                 cd /home/ubuntu
                 rm -r AWStats
@@ -23,7 +23,7 @@ EOF
         stage('Chackout Updated code') {
             steps {
                 sshagent(['35.154.202.202']) {
-                sh "ssh -o StrictHostKeyChecking=no ubuntu@3.108.41.101 'sudo su; cd /home/ubuntu; git clone https://github.com/supreet-kulkarni/AWStats.git'"
+                sh "ssh -o StrictHostKeyChecking=no ubuntu@13.234.59.0 'sudo su; cd /home/ubuntu; git clone https://github.com/supreet-kulkarni/AWStats.git'"
                 }
             }
         }
@@ -31,7 +31,7 @@ EOF
             steps {
                 sshagent(['35.154.202.202']) {
                  sh '''#!/bin/bash 
-                 ssh -o StrictHostKeyChecking=no ubuntu@3.108.41.101 <<EOF
+                 ssh -o StrictHostKeyChecking=no ubuntu@13.234.59.0 <<EOF
                  sudo su
                  cd /home/ubuntu
                  tar cvzf AWStats-7.9.tar.gz AWStats
@@ -54,7 +54,7 @@ EOF
             steps {
                 sshagent(['35.154.202.202']) {
                 sh '''#!/bin/bash 
-                ssh -o StrictHostKeyChecking=no ubuntu@3.108.41.101 <<EOF
+                ssh -o StrictHostKeyChecking=no ubuntu@13.234.59.0 <<EOF
                 sudo su
                 cd /usr/lib/cgi-bin/awstat
                      cp awstats.model.conf awstats.linux.conf
