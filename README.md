@@ -1,6 +1,6 @@
 # AWStats - Advanced Web Statistics
 
-- AWStats (Advanced Web Statistics) is a powerful, full-featured web server
+- AWStats (Advanced Web Statistics) is a powerful, full-featured web server.
 logfile analyzer which shows you all your Web statistics including: visitors,
 pages, hits, hours, search engines, keywords used to find your site, broken
 links, robots and many more...
