@@ -4,9 +4,9 @@ pipeline {
     stages {
         stage('Remove previous version') {
             steps {
-                sshagent(['35.154.202.202']) {
+                sshagent(['ubuntu-key']) {
                 sh '''#!/bin/bash
-                ssh -o StrictHostKeyChecking=no ubuntu@13.234.59.0 <<EOF 
+                ssh -o StrictHostKeyChecking=no ubuntu@43.205.98.253 <<EOF 
                 sudo su
                 cd /home/ubuntu
                 rm -r AWStats
@@ -22,16 +22,16 @@ EOF
         }
         stage('Checkout Updated code') {
             steps {
-                sshagent(['35.154.202.202']) {
-                sh "ssh -o StrictHostKeyChecking=no ubuntu@13.234.59.0 'sudo su; cd /home/ubuntu; git clone https://github.com/supreet-kulkarni/AWStats.git'"
+                sshagent(['ubuntu-key']) {
+                sh "ssh -o StrictHostKeyChecking=no ubuntu@43.205.98.253 'sudo su; cd /home/ubuntu; git clone https://github.com/supreet-kulkarni/AWStats.git'"
                 }
             }
         }
         stage('Awstatas setup') {
             steps {
-                sshagent(['35.154.202.202']) {
+                sshagent(['ubuntu-key']) {
                  sh '''#!/bin/bash 
-                 ssh -o StrictHostKeyChecking=no ubuntu@13.234.59.0 <<EOF
+                 ssh -o StrictHostKeyChecking=no ubuntu@43.205.98.253 <<EOF
                  sudo su
                  cd /home/ubuntu
                  tar cvzf AWStats-7.9.tar.gz AWStats
@@ -52,9 +52,9 @@ EOF
         }
         stage('Configure AWStats') {
             steps {
-                sshagent(['35.154.202.202']) {
+                sshagent(['ubuntu-key']) {
                 sh '''#!/bin/bash 
-                ssh -o StrictHostKeyChecking=no ubuntu@13.234.59.0 <<EOF
+                ssh -o StrictHostKeyChecking=no ubuntu@43.205.98.253 <<EOF
                 sudo su
                 cd /usr/lib/cgi-bin/awstat
                      cp awstats.model.conf awstats.linux.conf
